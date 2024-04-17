@@ -22,7 +22,13 @@ pipeline {
                         sh "mv ${FILE} ${DEST_FILE}/${NEW_FILE_NAME}"
                         
                         // Beritahu Jenkins bahwa operasi telah selesai
-                        echo "File berhasil diunggah dan disimpan di ${DEST_FILE}/${NEW_FILE_NAME}"
+                        // Menampilkan informasi setelah operasi mv
+                        echo "After mv operation:"
+                        sh "ls -lh ${DEST_FILE}"
+                        
+                        // Menampilkan isi direktori
+                        echo "Contents of ${DEST_FILE}:"
+                        sh "ls -lh ${DEST_FILE}"
                     } else {
                         error "Usage: FILE and FILE_NAME are required parameters" // Menghapus DEST_FILE dari pesan kesalahan karena sudah ditentukan di atas
                     }
