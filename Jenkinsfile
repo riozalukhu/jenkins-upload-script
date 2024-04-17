@@ -5,9 +5,9 @@ pipeline {
             steps {
                 script {
                     // Mengambil nilai parameter dari input Jenkins
-                    def FILE = params.FILE
-                    def FILE_NAME = params.FILE_NAME
-                    def DEST_FILE = "file/coba" // Modifikasi untuk menetapkan direktori DEST_FILE
+                    def FILE = "$FILE"
+                    def FILE_NAME = "$FILE_NAME"
+                    def DEST_FILE = "$DEST_FILE" // Modifikasi untuk menetapkan direktori DEST_FILE
                     
                     // Periksa apakah nilai parameter telah diberikan
                     if (FILE && FILE_NAME) { // Tidak perlu memeriksa DEST_FILE karena sudah ditentukan di atas
