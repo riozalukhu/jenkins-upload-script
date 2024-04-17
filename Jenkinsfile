@@ -4,12 +4,12 @@ pipeline {
         stage('Upload File') {
             steps {
                 script {
-                    // Mengambil argumen dari Jenkins job
+                    // Mengambil nilai parameter dari input Jenkins
                     def FILE = params.FILE
                     def FILE_NAME = params.FILE_NAME
                     def DEST_FILE = params.DEST_FILE
                     
-                    // Periksa apakah argumen telah diberikan
+                    // Periksa apakah nilai parameter telah diberikan
                     if (FILE && FILE_NAME && DEST_FILE) {
                         // Ambil ekstensi file yang diunggah
                         def EXTENSION = sh(script: "echo \${FILE##*.}", returnStdout: true).trim()
