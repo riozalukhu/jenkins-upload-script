@@ -1,5 +1,6 @@
 pipeline {
     agent any
+    
     stages {
         stage('Upload File') {
             steps {
@@ -18,7 +19,7 @@ pipeline {
                         def NEW_FILE_NAME = "${FILE_NAME}.${EXTENSION}"
                         
                         // Pindahkan file ke DEST_FILE dengan nama yang baru
-                        sh "mv $FILE ${DEST_FILE}/${NEW_FILE_NAME}"
+                        sh "mv ${FILE} ${DEST_FILE}/${NEW_FILE_NAME}"
                         
                         // Beritahu Jenkins bahwa operasi telah selesai
                         echo "File berhasil diunggah dan disimpan di ${DEST_FILE}/${NEW_FILE_NAME}"
