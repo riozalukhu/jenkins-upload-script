@@ -7,10 +7,10 @@ pipeline {
                     // Mengambil nilai parameter dari input Jenkins
                     def FILE = params.FILE
                     def FILE_NAME = params.FILE_NAME
-                    def DEST_FILE = params.DEST_FILE
+                    def DEST_FILE = "file/coba" // Modifikasi untuk menetapkan direktori DEST_FILE
                     
                     // Periksa apakah nilai parameter telah diberikan
-                    if (FILE && FILE_NAME && DEST_FILE) {
+                    if (FILE && FILE_NAME) { // Tidak perlu memeriksa DEST_FILE karena sudah ditentukan di atas
                         // Ambil ekstensi file yang diunggah
                         def EXTENSION = sh(script: "echo \${FILE##*.}", returnStdout: true).trim()
                         
@@ -23,7 +23,7 @@ pipeline {
                         // Beritahu Jenkins bahwa operasi telah selesai
                         echo "File berhasil diunggah dan disimpan di ${DEST_FILE}/${NEW_FILE_NAME}"
                     } else {
-                        error "Usage: FILE, FILE_NAME, and DEST_FILE are required parameters"
+                        error "Usage: FILE and FILE_NAME are required parameters" // Menghapus DEST_FILE dari pesan kesalahan karena sudah ditentukan di atas
                     }
                 }
             }
