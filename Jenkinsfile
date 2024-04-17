@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     // Mengambil nilai parameter dari input Jenkins
-                    def FILE = "$FILE"
+                    def FILE = readFile "$FILE"
                     def FILE_NAME = "$FILE_NAME"
                     def DEST_FILE = "$DEST_FILE" // Modifikasi untuk menetapkan direktori DEST_FILE
                     
